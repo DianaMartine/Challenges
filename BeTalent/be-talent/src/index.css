@@ -1,13 +1,79 @@
+:root {
+  /* colors */
+  --blue-primary: #0500FF;
+  --blue-10: #EDEFFB;
+  --black: #1C1C1C;
+  --gray-20: #9E9E9E;
+  --gray-10: #DFDFDF;
+  --gray-05: #F5F5F5;
+  --gray: #F0F0F0;
+  --white: #FFF;
+
+  /* typography */
+  --font-family-primary: 'Roboto', sans-serif;
+  --font-family-secondary: 'Helvetica Neue', serif;
+  --font-size-large: 20px;
+  --font-size-medium: 16px;
+  --font-size-regular: 16px;
+  --font-weight-bold: 500;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --line-height-large: 24.4px;
+  --line-height-medium: 19.54px;
+  --line-height-regular: 19.09px;
+
+  /* spaces */
+  --spacing-large: 80px;
+  --spacing-medium: 60px;
+  --spacing-regular: 40px;
+  --spacing-small: 32px;
+  --spacing-xsmall: 28px;
+  --spacing-xxsmall: 20px;
+  --spacing-xxxsmall: 16px;
+  --spacing-little: 8px;
+  --spacing-xlittle: 4px;
+
+  /* shadows */
+  --shadow-1: 0px 1px 2px 0px #00000033;
+  --shadow-2: 0px 2px 4px 0px #00000033;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-secondary);
+}
+
+h1 {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-large);
+}
+
+h2 {
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-medium);
+}
+
+h3 {
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-regular);
 }
