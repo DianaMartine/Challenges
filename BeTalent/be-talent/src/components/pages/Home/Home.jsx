@@ -40,33 +40,33 @@ const Home = () => {
             setEmployees(filteredEmployees);
         }
     }
-    , [query]);    
-
-    const setHeadersByWidth = () => {
-        if (
-            window.innerWidth < 768 &&
-            headers.length > 2
-        ) {
-            setHeaders([
-                'FOTO',
-                'NOME',
-                ''
-            ]);
-        } else {
-            setHeaders([
-                'FOTO',
-                'NOME',
-                'CARGO',
-                'DATA DE ADMISSÃO',
-                'TELEFONE'
-            ]);
-        }
-    };
+    , [query, employees]);    
 
     React.useEffect(() => {
+        const setHeadersByWidth = () => {
+            if (
+                window.innerWidth < 768 &&
+                headers.length > 2
+            ) {
+                setHeaders([
+                    'FOTO',
+                    'NOME',
+                    ''
+                ]);
+            } else {
+                setHeaders([
+                    'FOTO',
+                    'NOME',
+                    'CARGO',
+                    'DATA DE ADMISSÃO',
+                    'TELEFONE'
+                ]);
+            }
+        };
+
         window.addEventListener('resize', setHeadersByWidth);
         return () => window.removeEventListener('resize', setHeadersByWidth);
-    }, []);
+    }, [headers]);
 
     return (
         <div className='Home'>
