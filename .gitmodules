@@ -1,0 +1,3 @@
+[submodule "BeTalent/be-talent"]
+	path = BeTalent/be-talent
+	url = https://github.com/DianaMartine/be-talent.git
