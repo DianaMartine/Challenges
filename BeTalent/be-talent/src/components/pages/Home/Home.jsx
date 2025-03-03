@@ -17,30 +17,18 @@ const Home = () => {
     const [query, setQuery] = React.useState('');
 
     React.useEffect(() => {
-        const fetchEmployees = async () => {
+        const searchEmployees = async () => {
             const response = await getEmployees();
-            setEmployees(response);
+            const filteredEmployees = response.filter(employee => {
+                return employee.name.toLowerCase().includes(query.toLowerCase());
+            });
+
+            setEmployees(filteredEmployees);
         };
 
-        fetchEmployees();
-    }
-    , []);
+        searchEmployees();
+    }, [query]);
 
-    React.useEffect(() => {
-        let searchResult = query;
-
-        if (searchResult) {
-            searchResult = searchResult.toLowerCase();
-
-            const filteredEmployees = employees.filter((employee) => {
-                return (
-                    employee.name.toLowerCase().includes(searchResult)
-                );
-            });
-            setEmployees(filteredEmployees);
-        }
-    }
-    , [query, employees]);    
 
     React.useEffect(() => {
         const setHeadersByWidth = () => {
