@@ -3,18 +3,14 @@ import getEmployees from '../../../services/api';
 import Header from "../../layout/Header/Header";
 import SearchBox from '../../layout/SearchBox/SearchBox';
 import Table from '../../layout/Table/Table';
+import '../../layout/Table/Table.css';
 import './Home.css';
 
 const Home = () => {
     const [employees, setEmployees] = React.useState([]);
-    const [headers, setHeaders] = React.useState([
-        'FOTO',
-        'NOME',
-        'CARGO',
-        'DATA DE ADMISSÃO',
-        'TELEFONE'
-    ]);
+    const [headers, setHeaders] = React.useState([]);
     const [query, setQuery] = React.useState('');
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
 
     React.useEffect(() => {
         const searchEmployees = async () => {
@@ -29,32 +25,20 @@ const Home = () => {
         searchEmployees();
     }, [query]);
 
-
     React.useEffect(() => {
         const setHeadersByWidth = () => {
-            if (
-                window.innerWidth < 768 &&
-                headers.length > 2
-            ) {
-                setHeaders([
-                    'FOTO',
-                    'NOME',
-                    ''
-                ]);
+            if (window.innerWidth < 768) {
+                setHeaders(['FOTO', 'NOME', '']);
             } else {
-                setHeaders([
-                    'FOTO',
-                    'NOME',
-                    'CARGO',
-                    'DATA DE ADMISSÃO',
-                    'TELEFONE'
-                ]);
+                setHeaders(['FOTO', 'NOME', 'CARGO', 'DATA DE ADMISSÃO', 'TELEFONE']);
             }
+            setIsMobile(window.innerWidth < 768);
         };
 
+        setHeadersByWidth();
         window.addEventListener('resize', setHeadersByWidth);
         return () => window.removeEventListener('resize', setHeadersByWidth);
-    }, [headers]);
+    }, []);
 
     return (
         <div className='Home'>
@@ -70,23 +54,9 @@ const Home = () => {
 
             <Table
                 headers={headers}
-                content={employees}>
-                    <Table.Header>
-                        FOTO
-                    </Table.Header>
-                    <Table.Header>
-                        NOME
-                    </Table.Header>
-                    <Table.Header>
-                        CARGO
-                    </Table.Header>
-                    <Table.Header>
-                        DATA DE ADMISSÃO
-                    </Table.Header>
-                    <Table.Header>
-                        TELEFONE
-                    </Table.Header>
-                </Table>
+                content={employees.length > 0 ? employees : []}
+                isMobile={isMobile}
+            />
         </div>
     )
 }
