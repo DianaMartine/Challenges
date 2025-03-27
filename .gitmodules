@@ -1,3 +1,9 @@
 [submodule "BeTalent/be-talent"]
 	path = BeTalent/be-talent
 	url = https://github.com/DianaMartine/be-talent.git
+[submodule "ebanx-challenge"]
+	path = ebanx-challenge
+	url = https://github.com/DianaMartine/ebanx-challenge.git
+[submodule "Ebanx/ebanx-challenge"]
+	path = Ebanx/ebanx-challenge
+	url = https://github.com/DianaMartine/ebanx-challenge.git
